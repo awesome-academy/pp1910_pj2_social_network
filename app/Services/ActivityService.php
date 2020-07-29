@@ -15,9 +15,9 @@ class ActivityService
      *
      * @return void
      */
-    public function __construct(FriendService $friendService)
+    public function __construct()
     {
-        $this->friendService = $friendService;
+        //
     }
 
     /**
