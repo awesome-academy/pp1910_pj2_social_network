@@ -28,5 +28,6 @@
 				size:"8px",
 			});		
 	</script>
+	@yield('script')
   </body>
 </html>

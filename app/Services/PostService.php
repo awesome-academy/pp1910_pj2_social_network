@@ -5,20 +5,21 @@ namespace App\Services;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use App\Services\ActivityService;
 
 class PostService
 {
     protected $post;
 
-    public function __construct(Post $post)
+    public function __construct(ActivityService $activityService)
     {
-        $this->post = $post;
+        $this->activityService = $activityService;
     }
 
     public function getPostData($request)
     {
         return $request->only([
-            'content',
+            'title',
             'image',
             'type'
         ]);
@@ -29,7 +30,7 @@ class PostService
         $imageArray = [];
         foreach ($images as $image) {
             $fileName = time() . '_' . $image->getClientOriginalName();
-            $image->move('/posts', $fileName, 'post_images');
+            $image->storeAs('/posts', $fileName, 'post_images');
             $imageArray[] = $fileName;
         }
         $imageString = json_encode($imageArray);

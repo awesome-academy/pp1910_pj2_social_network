@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostRequest;
 use Illuminate\Http\Request;
 use App\Services\PostService;
 
@@ -39,7 +40,7 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
         $data = $this->postService->getPostData($request);
 
@@ -54,7 +55,6 @@ class PostController extends Controller
         if ($storePost) {
             return back()->with('success', __('post.create.success'));
         }
-        dd($request);
 
         return back()->with('error', __('post.error'));
     }
