@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Activity extends Model
@@ -23,5 +22,35 @@ class Activity extends Model
     public function post()
     {
         return $this->belongsTo(Post::class);
+    }
+
+    /**
+     * Scope if activity is like.
+     *
+     * @return Boolean
+     */
+    public function scopeIsLike()
+    {
+        return $this->type == config('activity.type.like');
+    }
+
+    /**
+     * Scope if activity is upload.
+     *
+     * @return Boolean
+     */
+    public function scopeIsUpload()
+    {
+        return $this->type == config('activity.type.upload');
+    }
+
+    /**
+     * Scope if activity is comment.
+     *
+     * @return Boolean
+     */
+    public function scopeIsComment()
+    {
+        return $this->type == config('activity.type.comment');
     }
 }
