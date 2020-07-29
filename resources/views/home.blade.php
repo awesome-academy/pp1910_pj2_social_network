@@ -2,35 +2,6 @@
 
 @section('title', 'Fluffs')
 @section('content')
-    <section class="nav-sec">
-        <div class="d-flex justify-content-between">
-            <div class="p-2 nav-icon-lg mint-green">
-                <a class="nav-icon" href="photo_home.html"><em class="fa fa-home"></em>
-                    <span>{{ __('Home') }}</span>
-                </a>
-            </div>
-            <div class="p-2 nav-icon-lg clean-black">
-                <a class="nav-icon" href="photo_explore.html"><em class="fa fa-crosshairs"></em>
-                    <span>{{ __('Explore') }}</span>
-                </a>
-            </div>
-            <div class="p-2 nav-icon-lg dark-black">
-                <a class="nav-icon" href="photo_upload.html"><em class="fab fa-instagram"></em>
-                    <span>{{ __('Upload') }}</span>
-                </a>
-            </div>
-            <div class="p-2 nav-icon-lg clean-black">
-                <a class="nav-icon" href="photo_stories.html"><em class="fa fa-align-left"></em>
-                    <span>{{ __('Stories') }}</span>
-                </a>
-            </div>
-            <div class="p-2 nav-icon-lg dark-black">
-                <a class="nav-icon" href="photo_profile.html"><em class="fa fa-user"></em>
-                    <span>{{ __('Profile') }}</span>
-                </a>
-            </div>
-        </div>
-	</section>
     <section class="newsfeed">
         <div class="container-fluid">
             <div class="row">
@@ -84,6 +55,27 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
+                    <div class="box">
+                        <form action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <input class="form-control no-border" rows="3" name="title" placeholder="Type something...">
+                            <div class="box-footer clearfix">
+                                <button type="submit" class="kafe-btn kafe-btn-mint-small pull-right btn-sm">{{ __('Upload') }}</button>
+                                <ul class="nav nav-pills nav-sm">
+                                    <li class="nav-item">
+                                        <a href="#" class="options-message" data-toggle="tooltip" data-placement="top" data-original-title="@lang('ADD PHOTOS')">
+                                            <label for="upload-image" class="display-inline">
+                                                <i class="fa fa-camera text-muted"></i>
+                                            </label>
+                                            <input class="input-image form-control @error('image') is-invalid @enderror" type="file" id="upload-image" name="image[]" accept="image/*" multiple>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="dvPreview">
+                            </div>
+                        </form>
+                    </div>
                     <div class="cardbox">
                         <div class="cardbox-heading">
                             <div class="dropdown pull-right">
@@ -314,4 +306,36 @@
             </div>
         </div>
     </div>
+@endsection
+@section('script')
+<script language="javascript" type="text/javascript">
+    $(function () {
+        $("#upload-image").change(function () {
+            if (typeof (FileReader) != "undefined") {
+                var dvPreview = $("#dvPreview");
+                dvPreview.html("");
+                var regex = /^([a-zA-Z0-9\s_\\.\-:])+(.jpg|.jpeg|.gif|.png|.bmp)$/;
+                $($(this)[0].files).each(function () {
+                    var file = $(this);
+                    if (regex.test(file[0].name.toLowerCase())) {
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            var img = $("<img />");
+                            img.attr("style", "height:100px;width: 100px");
+                            img.attr("src", e.target.result);
+                            dvPreview.append(img);
+                        }
+                        reader.readAsDataURL(file[0]);
+                    } else {
+                        alert(file[0].name + " is not a valid image file.");
+                        dvPreview.html("");
+                        return false;
+                    }
+                });
+            } else {
+                alert("This browser does not support HTML5 FileReader.");
+            }
+        });
+    });
+    </script>
 @endsection
