@@ -59,14 +59,21 @@
                     </li>
                     <li class="dropdown mega-avatar">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                            <span class="avatar w-32"><img src="assets/img/users/2.jpg" class="img-resonsive img-circle" width="25" height="25" alt="..."></span>
+                        <span class="avatar w-32"><img src="#" class="img-resonsive img-circle" width="25" height="25" alt="avatar" onerror="this.src='{{ asset('assets/img/users/2.jpg') }}'"></span>
                             <span class="hidden-xs">{{auth()->user()->name}}</span>
                         </a>
                         <div class="dropdown-menu w dropdown-menu-scale pull-right">
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#"><span>{{ __('Profile') }}</span></a> 
                             <a class="dropdown-item" href="#"><span>{{ __('Settings') }}</span></a> 
-                            <a class="dropdown-item" href="#">{{ __('Sign out') }}</a>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                               document.getElementById('logout-form').submit();">
+                                {{ __('Sign out') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
                         </div>
                     </li>
                 </ul> 
@@ -74,3 +81,32 @@
         </div>
     </nav>
 </header>
+<section class="nav-sec">
+    <div class="d-flex justify-content-between">
+        <div class="p-2 nav-icon-lg mint-green">
+            <a class="nav-icon" href="#"><em class="fa fa-home"></em>
+                <span>{{ __('Home') }}</span>
+            </a>
+        </div>
+        <div class="p-2 nav-icon-lg clean-black">
+            <a class="nav-icon" href="#"><em class="fa fa-crosshairs"></em>
+                <span>{{ __('Explore') }}</span>
+            </a>
+        </div>
+        <div class="p-2 nav-icon-lg dark-black">
+            <a class="nav-icon" href="#"><em class="fab fa-instagram"></em>
+                <span>{{ __('Upload') }}</span>
+            </a>
+        </div>
+        <div class="p-2 nav-icon-lg clean-black">
+            <a class="nav-icon" href="#"><em class="fa fa-align-left"></em>
+                <span>{{ __('Stories') }}</span>
+            </a>
+        </div>
+        <div class="p-2 nav-icon-lg dark-black">
+            <a class="nav-icon" href="#"><em class="fa fa-user"></em>
+                <span>{{ __('Profile') }}</span>
+            </a>
+        </div>
+    </div>
+</section>
