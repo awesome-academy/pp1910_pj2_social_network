@@ -16,7 +16,7 @@
                 </ul>
             </div>
             </div>
-            <div class="navbar-right">                          
+            <div class="navbar-right">
                 <ul class="nav navbar-nav">
                     <li>
                         <div class="search-dashboard">
@@ -24,7 +24,7 @@
                                 <input placeholder="Search here" type="text">
                                 <button type="submit"><i class="fa fa-search"></i></button>
                             </form>
-                        </div>							
+                        </div>
                     </li>
 
                     <li class="dropdown notification-list">
@@ -36,7 +36,7 @@
                             <div class="dropdown-item noti-title">
                                 <h6 class="m-0">
                                     <span class="pull-right">
-                                        <a href="" class="text-dark"><small>{{ __('Clear All') }}</small></a> 
+                                        <a href="" class="text-dark"><small>{{ __('Clear All') }}</small></a>
                                     </span>
                                     {{ __('Notification') }}
                                 </h6>
@@ -64,8 +64,8 @@
                         </a>
                         <div class="dropdown-menu w dropdown-menu-scale pull-right">
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#"><span>{{ __('Profile') }}</span></a> 
-                            <a class="dropdown-item" href="#"><span>{{ __('Settings') }}</span></a> 
+                            <a class="dropdown-item" href="#"><span>{{ __('My Profile') }}</span></a>
+                            <a class="dropdown-item" href="{{ route('user.getProfile') }}"><span>{{ __('Settings') }}</span></a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                document.getElementById('logout-form').submit();">
@@ -76,7 +76,7 @@
                             </form>
                         </div>
                     </li>
-                </ul> 
+                </ul>
             </div>
         </div>
     </nav>
