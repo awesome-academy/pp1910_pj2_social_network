@@ -23,6 +23,7 @@ class User extends Authenticatable
         'gender',
         'avatar',
         'cover',
+        'language'
     ];
 
     /**
@@ -31,7 +32,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 
+        'password',
         'remember_token',
     ];
 
@@ -62,5 +63,25 @@ class User extends Authenticatable
     public function reacts()
     {
         return $this->hasMany(React::class);
+    }
+
+    /**
+     * Scope if user is Male.
+     *
+     * @return Boolean
+     */
+    public function scopeIsMale()
+    {
+        return $this->gender == config('user.gender.male');
+    }
+
+    /**
+     * Scope if user is Female.
+     *
+     * @return Boolean
+     */
+    public function scopeIsFemale()
+    {
+        return $this->gender == config('user.gender.female');
     }
 }

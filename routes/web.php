@@ -14,3 +14,5 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::resource('posts', 'PostController');
+Route::get('/setting', 'UserController@getProfile')->name('user.getProfile');
+Route::post('/setting/update', 'UserController@updateProfile')->name('user.updateProfile');
