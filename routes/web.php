@@ -14,5 +14,7 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 Route::resource('posts', 'PostController');
-Route::get('/setting', 'UserController@getProfile')->name('user.getProfile');
-Route::post('/setting/update', 'UserController@updateProfile')->name('user.updateProfile');
+Route::get('/settings', 'UserController@getProfile')->name('user.getProfile');
+Route::post('/settings/update', 'UserController@updateProfile')->name('user.updateProfile');
+Route::get('/settings/password', 'UserController@getChangePassword')->name('user.getChangePassword');
+Route::post('/settings/password/update', 'UserController@changePassword')->name('user.changePassword');
