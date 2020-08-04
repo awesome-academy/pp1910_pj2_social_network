@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{__('Register')}}</title>	
+    <title>{{__('Register')}}</title>
     <link rel="icon" href="{{ asset('assets/img/logo.jpg')}}">
     <link type="text/css" href="{{ asset('assets/css/demos/photo.css')}}" rel="stylesheet" />
     <script src="{{ asset('assets/js/modernizr-custom.js')}}"></script>
@@ -26,7 +26,10 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <input name="name" type="text" class="form-control" placeholder="Username">
+                        <input name="username" type="text" class="form-control" placeholder="User Name">
+                    </div>
+                    <div class="form-group">
+                        <input name="name" type="text" class="form-control" placeholder="Name">
                     </div>
                     <div class="form-group">
                         <input type="password" class="form-control @error('password') is-invalid @enderror" name='password' required placeholder="Password">

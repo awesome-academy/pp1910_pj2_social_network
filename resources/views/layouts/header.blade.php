@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html"><i class="fab fa-instagram"></i>{{ __('Fluffs') }}</a>
+                <a class="navbar-brand" href="{{ route('home') }}"><i class="fab fa-instagram"></i>{{ __('Fluffs') }}</a>
             </div>
             <div class="navbar-left">
                 <div class="collapse navbar-collapse" id="navbar-collapse">
@@ -59,12 +59,12 @@
                     </li>
                     <li class="dropdown mega-avatar">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                        <span class="avatar w-32"><img src="#" class="img-resonsive img-circle" width="25" height="25" alt="avatar" onerror="this.src='{{ asset('assets/img/users/2.jpg') }}'"></span>
+                        <span class="avatar w-32"><img src="#" class="img-resonsive img-circle" width="25" height="25" alt="avatar" onerror="this.src='{{ asset('assets/img/avatar.png') }}'"></span>
                             <span class="hidden-xs">{{auth()->user()->name}}</span>
                         </a>
                         <div class="dropdown-menu w dropdown-menu-scale pull-right">
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#"><span>{{ __('My Profile') }}</span></a>
+                            <a class="dropdown-item" href="{{ route('user.profile', auth()->user()->username) }}"><span>{{ __('My Profile') }}</span></a>
                             <a class="dropdown-item" href="{{ route('user.getProfile') }}"><span>{{ __('Settings') }}</span></a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();

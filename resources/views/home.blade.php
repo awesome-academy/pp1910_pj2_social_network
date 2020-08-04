@@ -25,7 +25,7 @@
                 </a>
             </div>
             <div class="p-2 nav-icon-lg dark-black">
-                <a class="nav-icon" href="#"><em class="fa fa-user"></em>
+                <a class="nav-icon" href="{{ route('user.profile', auth()->user()->username) }}"><em class="fa fa-user"></em>
                     <span>{{ __('Profile') }}</span>
                 </a>
             </div>
@@ -41,37 +41,37 @@
                                 <div class=""><img class="img-circle" src="assets/img/users/10.jpg" alt="user"></div>
                                 <h4>Clifford Graham</h4>
                                 <p>2 hours ago</p>
-                            </div>		  
+                            </div>
                         </div>
                     </a>
-                
+
                     <a href="#">
                         <div class="storybox">
                             <div class="story-body text-center">
                                 <div class=""><img class="img-circle" src="assets/img/users/13.jpeg" alt="user"></div>
                                 <h4>Eleanor Harper</h4>
                                 <p>4 hours ago</p>
-                            </div>		  
+                            </div>
                         </div>
                     </a>
-                
+
                     <a href="#">
                         <div class="storybox">
                             <div class="story-body text-center">
                                 <div class=""><img class="img-circle" src="assets/img/users/12.jpg" alt="user"></div>
                                 <h4>Sean Coleman</h4>
                                 <p>5 hours ago</p>
-                            </div>		  
+                            </div>
                         </div>
                     </a>
-                
+
                     <a href="#">
                         <div class="storybox">
                             <div class="story-body text-center">
                                 <div class=""><img class="img-circle" src="assets/img/users/15.jpg" alt="user"></div>
                                 <h4>Vanessa Wells</h4>
                                 <p>5 hours ago</p>
-                            </div>		  
+                            </div>
                         </div>
                     </a>
 
@@ -130,7 +130,7 @@
                         <div class="cardbox-item">
                             <a href="#myModal" data-toggle="modal">
                                 <img class="img-responsive" src="assets/img/posts/1.jpg" alt="MaterialImg">
-                            </a> 
+                            </a>
                         </div>
                         <div class="cardbox-base">
                             <ul>
@@ -151,7 +151,7 @@
                                 <li><a href="#"><i class="fa fa-heart"></i></a><span> 786,286</span></li>
                                 <li><a href="#" title="" class="com"><i class="fa fa-comments"></i></a> <span class="span-last"> 126,400</span></li>
                             </ul>
-                        </div>		
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-3">
@@ -206,7 +206,7 @@
                                 <span><i class="fa fa-plus"></i></span>
                             </div>
                         </div><!--suggestions-list end-->
-                    </div>	
+                    </div>
 
                     <div class="trending-box">
                         <div class="row">
@@ -240,7 +240,7 @@
                                 <a href="#"><img src="assets/img/posts/20.jpg" class="img-responsive" alt="Image"/></a>
                             </div>
                         </div>
-                    </div>	
+                    </div>
                 </div>
             </div>
         </div>
@@ -264,7 +264,7 @@
                                     <span>12 minutes ago</span><br/>
                                     <a href="" class="kafe kafe-btn-mint-small"><i class="fa fa-check-square"></i> Following</a>
                                 </div>
-                                
+
                                 <ul class="img-comment-list">
                                     <li>
                                         <div class="comment-img">
@@ -315,8 +315,8 @@
                                 <div class="modal-meta-bottom">
                                     <ul>
                                         <li>
-                                            <a class="modal-like" href="#"><i class="fa fa-heart"></i></a><span class="modal-one"> 786,286</span> | 
-                                            <a class="modal-comment" href="#"><i class="fa fa-comments"></i></a><span> 786,286</span> 
+                                            <a class="modal-like" href="#"><i class="fa fa-heart"></i></a><span class="modal-one"> 786,286</span> |
+                                            <a class="modal-comment" href="#"><i class="fa fa-comments"></i></a><span> 786,286</span>
                                         </li>
                                         <li>
                                             <span class="thumb-xs">
@@ -325,8 +325,8 @@
                                             <div class="comment-body">
                                                 <input class="form-control input-sm" type="text" placeholder="Write your comment...">
                                             </div>
-                                        </li>				
-                                    </ul>				
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
