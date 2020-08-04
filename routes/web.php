@@ -18,3 +18,4 @@ Route::get('/settings', 'UserController@getProfile')->name('user.getProfile');
 Route::post('/settings/update', 'UserController@updateProfile')->name('user.updateProfile');
 Route::get('/settings/password', 'UserController@getChangePassword')->name('user.getChangePassword');
 Route::post('/settings/password/update', 'UserController@changePassword')->name('user.changePassword');
+Route::get('/{username}', 'ProfileController@showProfile')->name('user.profile');
