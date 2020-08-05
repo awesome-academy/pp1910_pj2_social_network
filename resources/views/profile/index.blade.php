@@ -20,12 +20,12 @@
                 </a>
             </div>
             <div class="p-2 nav-icon-lg clean-black">
-                <a class="nav-icon" href="{{ route('user.profile', auth()->user()->username) }}"><em class="fa fa-align-left"></em>
+                <a class="nav-icon" href="#"><em class="fa fa-align-left"></em>
                     <span>{{ __('Stories') }}</span>
                 </a>
             </div>
             <div class="p-2 nav-icon-lg mint-green">
-                <a class="nav-icon" href="#"><em class="fa fa-user"></em>
+                <a class="nav-icon" href="{{ route('user.profile', auth()->user()->username) }}"><em class="fa fa-user"></em>
                     <span>{{ __('Profile') }}</span>
                 </a>
             </div>
@@ -40,8 +40,9 @@
                             <li>
                                 <div class="user-info">
                                     <div class="image">
-                                        <a href="#">
-                                            <img src="#" class="img-responsive img-circle" alt="User" onerror="this.src='{{ asset('assets/img/avatar.png') }}'">
+                                        <a class="avatar_profile">
+                                            <img src="{{ getAvatar($user->avatar) }}" class="img-responsive img-circle" alt="User" onerror="this.src='{{ asset('assets/img/avatar.png') }}'">
+                                            <a href="#" type="button" data-toggle="modal" data-target="#update_avatar" class="avatar_btn"><em class="fa fa-edit pull-right"></em></a>
                                         </a>
                                     </div>
                                     <div class="detail">
@@ -145,6 +146,33 @@
             </div>
         </div>
     </section>
+    <div class="modal fade" id="update_avatar" tabindex="-1" role="dialog" aria-labelledby="update-header-avatar" aria-hidden="true">
+        <div class="modal-dialog window-popup update-header-photo" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{ __('Upload Avatar') }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="{{ route('user.updateAvatar', auth()->user()->username) }}" enctype="multipart/form-data">
+                        @csrf
+                        <a href="#" class="upload-photo-item photo-item-margin">
+                            <label for="upload-avatar" class="display-inline">
+                                <img src="{{ asset('assets/img/svg-icon/computer.svg') }}">
+                                <h6>{{ __('Upload Photo') }}</h6>
+                            </label>
+                        </a>
+                        <input type="file" id="upload-avatar" name="avatar" style="display: none">
+                        <hr>
+                        <div id="image-holder-avatar" style="text-align: center;"></div>
+                        <button class="btn btn-primary btn-avatar">{{ __('Upload') }}</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div id="myModal" class="modal fade">
         <div class="modal-dialog">
@@ -196,4 +224,44 @@
             </div>
         </div>
     </div>
+@endsection
+@section('script')
+    <script>
+        $(document).ready(function () {
+            $("#upload-avatar").on('change', function () {
+                //Get count of selected files
+
+                var countFiles = $(this)[0].files.length;
+                var imgPath = $(this)[0].value;
+                var imgSize = $(this).get(0).files[0].size;
+                var extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
+                var image_holder = $("#image-holder-avatar");
+                image_holder.empty();
+
+                if (extn == "gif" || extn == "png" || extn == "jpg" || extn == "jpeg") {
+                    if (typeof (FileReader) != "undefined") {
+                        if (imgSize < 2048000) {
+                            //loop for each file selected for uploaded.
+                            for (var i = 0; i < countFiles; i++) {
+                                var reader = new FileReader();
+                                reader.onload = function (e) {
+                                    $("<img />", {
+                                        "src": e.target.result,
+                                        "class": "thumb-image"
+                                    }).appendTo(image_holder);
+                                }
+                                image_holder.show();
+                                $('.btn-avatar').show();
+                                reader.readAsDataURL($(this)[0].files[i]);
+                            }
+                        } else {
+                            errorImageSize();
+                        }
+                    }
+                } else {
+                    errorImages();
+                }
+            });
+        });
+    </script>
 @endsection

@@ -59,7 +59,7 @@
                     </li>
                     <li class="dropdown mega-avatar">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-                        <span class="avatar w-32"><img src="#" class="img-resonsive img-circle" width="25" height="25" alt="avatar" onerror="this.src='{{ asset('assets/img/avatar.png') }}'"></span>
+                        <span class="avatar w-32"><img src="{{ getAvatar($user->avatar) }}" class="img-resonsive img-circle" width="25" height="25" alt="avatar" onerror="this.src='{{ asset('assets/img/avatar.png') }}'"></span>
                             <span class="hidden-xs">{{auth()->user()->name}}</span>
                         </a>
                         <div class="dropdown-menu w dropdown-menu-scale pull-right">
