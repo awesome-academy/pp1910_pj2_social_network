@@ -17,3 +17,16 @@ if (!function_exists('formatUserBirthday')) {
         return $dateFormatted;
     }
 }
+
+if (!function_exists('getAvatar')) {
+    function getAvatar($image)
+    {
+        $imagePath = 'assets/img/avatar.png';
+
+        if ($image) {
+            $imagePath = asset('storage/images/users/' . $image);
+        }
+
+        return $imagePath;
+    }
+}
